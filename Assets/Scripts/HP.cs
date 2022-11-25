@@ -23,6 +23,15 @@ public class HP : MonoBehaviour
         hp = hpMax;
     }
 
+    public void HealHP(int value)
+    {
+        hp += value;
+    }
+    public void DamageHP(int value)
+    {
+        hp -= value;
+    }
+
     void DecreaseHP()
     {
         hp -= Time.deltaTime * decreaseValue;

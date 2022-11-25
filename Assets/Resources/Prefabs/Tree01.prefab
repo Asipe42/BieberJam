@@ -149,3 +149,4 @@ MonoBehaviour:
   destination: 15
   duration: 1
   waitDestroyTime: 3
+  _healHP: 5
