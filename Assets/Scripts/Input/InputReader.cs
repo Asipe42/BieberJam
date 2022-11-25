@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class InputReader : MonoBehaviour
 {
-
     // Inspector
     [SerializeField] private TreeSpawner _treeSpawner;
     void Update()
@@ -20,6 +19,7 @@ public class InputReader : MonoBehaviour
         {
             TreeManager.instance.treeGroup.Peek().Shoot();
             _treeSpawner.SpawnTree();
+            AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
         }
     }
 }
