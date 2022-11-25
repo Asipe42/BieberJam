@@ -9,13 +9,9 @@ public class InputReader : MonoBehaviour
 
     Animator anim;
 
-    Vector3 originCameraPosition;
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
-
-        originCameraPosition = Camera.main.transform.position;
     }
 
     void Update()
@@ -37,7 +33,7 @@ public class InputReader : MonoBehaviour
             AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
             HP.instance.RecoverHP();
             anim.SetTrigger("Attack");
-            // Camera.main.DOShakePosition(0.2f);
+            Fever.instance.PlusFeverValue();
 
             var sequence = DOTween.Sequence();
             sequence.Append(Camera.main.DOOrthoSize(4.8f, 0.1f))

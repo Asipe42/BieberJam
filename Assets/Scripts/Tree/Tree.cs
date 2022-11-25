@@ -6,10 +6,12 @@ public class Tree : MonoBehaviour
     [SerializeField] float destination;
     [SerializeField] float duration;
     [SerializeField] float waitDestroyTime;
+    [SerializeField] bool onBranch;
 
     BoxCollider2D collider;
 
     Rigidbody2D rigid;
+
 
     private void Awake()
     {
