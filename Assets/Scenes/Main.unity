@@ -881,7 +881,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 20}
+  m_Size: {x: 0.2, y: 40}
   m_EdgeRadius: 0
 --- !u!1 &930022362
 GameObject:
@@ -1489,7 +1489,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 20}
+  m_Size: {x: 0.2, y: 40}
   m_EdgeRadius: 0
 --- !u!1 &1558173443
 GameObject:
@@ -2132,7 +2132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1916844167}
-  - component: {fileID: 1916844168}
   m_Layer: 0
   m_Name: Spawn Position
   m_TagString: Untagged
@@ -2155,23 +2154,6 @@ Transform:
   m_Father: {fileID: 2127229442}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1916844168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916844166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1afe1d28d2ea844f8002358c7811b7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnTransform: {fileID: 1916844167}
-  treeGroup: {fileID: 0}
-  treePrefab:
-  - {fileID: 8139250772776840235, guid: cf83c36a5481cf94882d7874a7a4a0a8, type: 3}
-  initCount: 0
 --- !u!1 &2043869732
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,6 +2424,7 @@ MonoBehaviour:
   treeGroup: {fileID: 1773612770}
   treePrefab:
   - {fileID: 8139250772776840235, guid: cf83c36a5481cf94882d7874a7a4a0a8, type: 3}
+  - {fileID: 8139250772776840235, guid: 82c921fb1c9ff6e4aa78cc85f717ce34, type: 3}
   initCount: 10
 --- !u!4 &2127229442
 Transform:
