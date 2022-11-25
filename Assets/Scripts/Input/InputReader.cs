@@ -9,13 +9,9 @@ public class InputReader : MonoBehaviour
 
     Animator anim;
 
-    Vector3 originCameraPosition;
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
-
-        originCameraPosition = Camera.main.transform.position;
     }
 
     void Update()
@@ -27,6 +23,15 @@ public class InputReader : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
+            anim.SetTrigger("Up");
+            Fever.instance.PlusFeverValue();
+            AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
+            HP.instance.RecoverHP();
+
+            var sequence = DOTween.Sequence();
+            sequence.Append(Camera.main.DOOrthoSize(4.8f, 0.1f))
+                    .Append(Camera.main.DOOrthoSize(5f, 0.2f));
+
             Destroy(TreeManager.instance.treeGroup.ToArray()[1].branch.gameObject);
         }
 
@@ -36,8 +41,8 @@ public class InputReader : MonoBehaviour
             shootTree.Shoot();
             _treeSpawner.SpawnTree();
             AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
-            anim.SetTrigger("Attack");
-            // Camera.main.DOShakePosition(0.2f);
+            anim.SetTrigger("Right");
+            Fever.instance.PlusFeverValue();
 
             // branch
             Tree bottomTree;

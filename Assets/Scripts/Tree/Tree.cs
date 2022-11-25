@@ -6,6 +6,7 @@ public class Tree : MonoBehaviour
     [SerializeField] float destination;
     [SerializeField] float duration;
     [SerializeField] float waitDestroyTime;
+    [SerializeField] bool onBranch;
     [SerializeField] int _healHP;
 
     BoxCollider2D collider;

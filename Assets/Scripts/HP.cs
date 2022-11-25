@@ -39,6 +39,9 @@ public class HP : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.onStart)
+            return;
+
         DecreaseHP();
         SyncGauge();
     }
