@@ -23,6 +23,14 @@ public class InputReader : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
+            anim.SetTrigger("Up");
+            Fever.instance.PlusFeverValue();
+            AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
+            HP.instance.RecoverHP();
+
+            var sequence = DOTween.Sequence();
+            sequence.Append(Camera.main.DOOrthoSize(4.8f, 0.1f))
+                    .Append(Camera.main.DOOrthoSize(5f, 0.2f));
 
         }
 
@@ -32,7 +40,7 @@ public class InputReader : MonoBehaviour
             _treeSpawner.SpawnTree();
             AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
             HP.instance.RecoverHP();
-            anim.SetTrigger("Attack");
+            anim.SetTrigger("Right");
             Fever.instance.PlusFeverValue();
 
             var sequence = DOTween.Sequence();
