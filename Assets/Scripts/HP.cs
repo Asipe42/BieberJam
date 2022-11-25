@@ -38,4 +38,9 @@ public class HP : MonoBehaviour
     {
         hpGauge.value = hp;
     }
+
+    public void SpeedUp()
+    {
+        decreaseValue += 5;
+    }
 }

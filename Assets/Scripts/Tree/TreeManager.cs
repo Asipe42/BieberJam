@@ -7,7 +7,11 @@ public class TreeManager : MonoBehaviour
 
     // Inspector
     [SerializeField] TreeSpawner _treeSpawner;
-    [SerializeField] int initCount; 
+    [SerializeField] int initCount;
+    [SerializeField] int[] speedUpIndex;
+    [SerializeField] bool[] onSpeedUp;
+    
+    public int killCount;
 
     public Queue<Tree> treeGroup;
 
@@ -17,7 +21,27 @@ public class TreeManager : MonoBehaviour
 
         treeGroup = new Queue<Tree>();
 
-        for(var i = 0; i < initCount; i++)
-        _treeSpawner.SpawnTree();
+        for (var i = 0; i < initCount; i++)
+            _treeSpawner.SpawnTree();
+    }
+
+    private void Update()
+    {
+        CheckKillCount();
+    }
+
+    void CheckKillCount()
+    {
+        for (int i = 0; i < onSpeedUp.Length; i++)
+        {
+            if (onSpeedUp[i])
+                return;
+
+            if (killCount > speedUpIndex[i])
+            {
+                onSpeedUp[i] = true;
+                HP.instance.SpeedUp();
+            }
+        }
     }
 }
