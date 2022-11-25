@@ -6,7 +6,8 @@ public class TreeManager : MonoBehaviour
     public static TreeManager instance;
 
     // Inspector
-    [SerializeField] private TreeSpawner _treeSpawner;
+    [SerializeField] TreeSpawner _treeSpawner;
+    [SerializeField] int initCount; 
 
     public Queue<Tree> treeGroup;
 
@@ -16,7 +17,7 @@ public class TreeManager : MonoBehaviour
 
         treeGroup = new Queue<Tree>();
 
-        for(var i = 0; i < 5; i++)
+        for(var i = 0; i < initCount; i++)
         _treeSpawner.SpawnTree();
     }
 }

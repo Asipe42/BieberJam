@@ -5,7 +5,6 @@ public class TreeSpawner : MonoBehaviour
     [SerializeField] Transform spawnTransform;
     [SerializeField] Transform treeGroup;
     [SerializeField] Tree[] treePrefab;
-    [SerializeField] int initCount;
 
     [ContextMenu("Spawn Tree")]
     public void SpawnTree()
