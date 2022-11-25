@@ -23,6 +23,7 @@ public class InputReader : MonoBehaviour
             TreeManager.instance.treeGroup.Peek().Shoot();
             _treeSpawner.SpawnTree();
             AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
+            HP.instance.RecoverHP();
         }
     }
 }
