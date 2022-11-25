@@ -3,7 +3,10 @@ using DG.Tweening;
 
 public class Tree : MonoBehaviour
 {
-    [SerializeField] float shootForce;
+    [SerializeField] float destination;
+    [SerializeField] float duration;
+    [SerializeField] float waitDestroyTime;
+
     Rigidbody2D rigid;
 
     private void Awake()
@@ -14,6 +17,10 @@ public class Tree : MonoBehaviour
     [ContextMenu("Shoot")]
     public void Shoot()
     {
-        transform.DOMoveX(5, 1.5f).SetEase(Ease.OutQuad);
+        transform.DOMoveX(destination, duration).SetEase(Ease.OutQuad);
+
+        TreeManager.instance.treeGroup.Dequeue();
+
+        Destroy(this.gameObject, waitDestroyTime);
     }
 }

@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TreeSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] Transform spawnTransform;
+    [SerializeField] Transform treeGroup;
+    [SerializeField] Tree[] treePrefab;
+    [SerializeField] int initCount;
 
-    // Update is called once per frame
-    void Update()
+    [ContextMenu("Spawn Tree")]
+    public void SpawnTree()
     {
+        int ranIndex = Random.Range(0, treePrefab.Length);
+
+        var spawnedTree = Instantiate(treePrefab[ranIndex], spawnTransform.position, Quaternion.identity);
         
+        TreeManager.instance.treeGroup.Enqueue(spawnedTree);
+        spawnedTree.transform.SetParent(treeGroup);
     }
 }

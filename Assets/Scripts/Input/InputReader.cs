@@ -11,12 +11,11 @@ public class InputReader : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("Up");
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("Right");
+            TreeManager.instance.treeGroup.Peek().Shoot();
         }
     }
 }
