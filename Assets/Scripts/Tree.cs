@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Tree : MonoBehaviour
 {
@@ -15,6 +14,6 @@ public class Tree : MonoBehaviour
     [ContextMenu("Shoot")]
     public void Shoot()
     {
-        rigid.AddForce(Vector2.right * shootForce, ForceMode2D.Impulse);
+        transform.DOMoveX(5, 1.5f).SetEase(Ease.OutQuad);
     }
 }
