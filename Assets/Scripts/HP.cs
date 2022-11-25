@@ -39,7 +39,7 @@ public class HP : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.onStart)
+        if (!GameManager.onStart)
             return;
 
         DecreaseHP();

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
@@ -8,6 +7,8 @@ public class InputReader : MonoBehaviour
     [SerializeField] private TreeSpawner _treeSpawner;
 
     Animator anim;
+
+    [SerializeField] float cooltime;
 
     private void Awake()
     {
@@ -21,6 +22,9 @@ public class InputReader : MonoBehaviour
 
     void InputKey()
     {
+        if (!GameManager.onStart)
+            return;
+
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             anim.SetTrigger("Up");
