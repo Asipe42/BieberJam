@@ -7,7 +7,6 @@ public class Tree : MonoBehaviour
     [SerializeField] float duration;
     [SerializeField] float waitDestroyTime;
     [SerializeField] bool onBranch;
-    [SerializeField] int _healHP;
 
     BoxCollider2D collider;
 
@@ -19,10 +18,6 @@ public class Tree : MonoBehaviour
     {
         get { return _branch; }
         set { _branch = value; }
-    }
-    public int healHP
-    {
-        get { return _healHP; }
     }
 
     // Value
