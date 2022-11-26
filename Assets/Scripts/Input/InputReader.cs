@@ -61,6 +61,19 @@ public class InputReader : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
+            // MISS
+            var targetBranch = TreeManager.instance.treeGroup.ToArray()[1].branch;
+            if (targetBranch)
+            {
+                var branchChild = targetBranch.transform.GetChild(0);
+
+                targetBranch.GetComponent<Rigidbody2D>().simulated = true;
+                branchChild.GetComponent<BoxCollider2D>().enabled = true;
+                branchChild.GetComponent<Animator>().SetBool("Crack", true);
+                branchChild.GetComponent<SpriteRenderer>().DOFade(0, 1f).SetDelay(0.5f).OnComplete(() => Destroy(targetBranch.gameObject));
+                targetBranch.transform.SetParent(null);
+            }
+
             TreeManager.instance.killCount++;
             var shootTree = TreeManager.instance.treeGroup.Peek();
             shootTree.Shoot();
