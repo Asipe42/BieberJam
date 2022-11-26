@@ -15,6 +15,14 @@ public class TreeManager : MonoBehaviour
 
     public Queue<Tree> treeGroup;
 
+    public void ResetSppedUP()
+    {
+        for (int i = 0; i < onSpeedUp.Length; i++)
+        {
+            onSpeedUp[i] = false;
+        }
+    }
+
     private void Awake()
     {
         instance = this;

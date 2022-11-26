@@ -7357,6 +7357,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1773612771}
+        m_TargetAssemblyTypeName: TreeManager, Assembly-CSharp
+        m_MethodName: ResetSppedUP
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1581991244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8193,8 +8205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _treeSpawner: {fileID: 2127229441}
   initCount: 16
-  speedUpIndex: 320000006400000096000000c8000000fa000000
-  onSpeedUp: 0000000000
+  speedUpIndex: 3200000064000000c8000000900100002003000040060000d0070000b80b0000a00f000088130000
+  onSpeedUp: 00000000000000000000
   killCount: 0
 --- !u!1001 &1807180788
 PrefabInstance:
@@ -8535,7 +8547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1878201340
 RectTransform:
   m_ObjectHideFlags: 0

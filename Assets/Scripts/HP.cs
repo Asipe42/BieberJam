@@ -67,7 +67,7 @@ public class HP : MonoBehaviour
 
     public void SpeedUp()
     {
-        decreaseValue += 5;
+        decreaseValue += 3;
     }
 
     void CheckGameOver()
