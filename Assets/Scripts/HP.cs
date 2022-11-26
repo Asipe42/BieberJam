@@ -8,6 +8,8 @@ public class HP : MonoBehaviour
     [SerializeField] Slider hpGauge;
     [SerializeField] float hpMax;
     [SerializeField] float decreaseValue;
+    [SerializeField] int branchDamageValue = 20;
+    [SerializeField] int treeRecoverValue = 5;
 
     float hp;
 
@@ -22,19 +24,25 @@ public class HP : MonoBehaviour
     {
         hp = hpMax;
     }
-
-    public void RecoverHP()
+    public void RecoverHP(int value)
+    {
+        hp = Mathf.Clamp(hp + value, 0, hpMax);
+    }
+    public void RecoverAllHP()
     {
         hp = hpMax;
     }
-
-    public void HealHP(int value)
-    {
-        hp += value;
-    }
     public void DamageHP(int value)
     {
-        hp -= value;
+        hp = Mathf.Clamp(hp - value, 0, hpMax);
+    }
+    public void RecoverByTree()
+    {
+        RecoverHP(treeRecoverValue);
+    }
+    public void DamageByBranch()
+    {
+        DamageHP(branchDamageValue);
     }
 
     void DecreaseHP()

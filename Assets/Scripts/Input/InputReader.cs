@@ -30,16 +30,28 @@ public class InputReader : MonoBehaviour
 
         if (onStun)
             return;
+        
+        if (FeverManager.instance.isFever)
+        {
+            FeverState();
+        }
+        else
+        {
+            NormalState();
+        }
+    }
 
+    void NormalState()
+    {
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             var targetBranch = TreeManager.instance.treeGroup.ToArray()[1].branch;
             if (targetBranch)
             {
                 anim.SetTrigger("Up");
-                Fever.instance.PlusFeverValue();
+                FeverManager.instance.PlusFeverValue();
                 AudioManager.instance.PlaySFX(SFXDefiniton.SFX_RIGHT);
-                HP.instance.RecoverHP();
+                HP.instance.RecoverByTree();
 
                 var sequence = DOTween.Sequence();
                 sequence.Append(Camera.main.DOOrthoSize(4.8f, 0.1f))
@@ -80,7 +92,7 @@ public class InputReader : MonoBehaviour
             _treeSpawner.SpawnTree();
             AudioManager.instance.PlaySFX(SFXDefiniton.SFX_RIGHT);
             anim.SetTrigger("Right");
-            Fever.instance.PlusFeverValue();
+            FeverManager.instance.PlusFeverValue();
 
             // branch
             Tree bottomTree;
@@ -88,17 +100,47 @@ public class InputReader : MonoBehaviour
 
             if (bottomTree.branch)
             {
-                HP.instance.DamageHP(bottomTree.branch.damage);
+                HP.instance.DamageByBranch();
             }
             else
             {
-                HP.instance.HealHP(shootTree.healHP);
+                HP.instance.RecoverByTree();
             }
 
             var sequence = DOTween.Sequence();
             sequence.Append(Camera.main.DOOrthoSize(4.8f, 0.1f))
                     .Append(Camera.main.DOOrthoSize(5f, 0.2f));
-                    
+
+        }
+    }
+
+    void FeverState()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) ||
+            Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            HP.instance.RecoverByTree();
+
+            var targetBranch = TreeManager.instance.treeGroup.ToArray()[1].branch;
+            if (targetBranch)
+            {
+                TreeManager.instance.treeGroup.ToArray()[1].branch = null;
+                targetBranch.transform.SetParent(_treeSpawner.transform);
+                targetBranch.Shoot();
+                Destroy(targetBranch.gameObject, 5);
+            }
+
+            TreeManager.instance.killCount++;
+            var shootTree = TreeManager.instance.treeGroup.Peek();
+            shootTree.Shoot();
+            _treeSpawner.SpawnTree();
+            AudioManager.instance.PlaySFX(SFXDefiniton.SFX_RIGHT);
+            anim.SetTrigger("Right");
+
+
+            var sequence = DOTween.Sequence();
+            sequence.Append(Camera.main.DOOrthoSize(4.8f, 0.1f))
+                    .Append(Camera.main.DOOrthoSize(5f, 0.2f));
         }
     }
 

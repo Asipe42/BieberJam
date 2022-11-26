@@ -5,21 +5,12 @@ using UnityEngine;
 public class Branch : MonoBehaviour
 {
     // Inspector
-    [SerializeField] private int _damageHP;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Vector2 _force;
     [SerializeField] private Vector2 _randomExtraForce;
     [SerializeField] private Vector2 _forcePosition;
 
     // Property
-    public int damage
-    {
-        get { return _damageHP; }
-    }
-    public Rigidbody2D rigidbody2D
-    {
-        get { return _rigidbody2D; }
-    }
 
     public void Shoot()
     {
