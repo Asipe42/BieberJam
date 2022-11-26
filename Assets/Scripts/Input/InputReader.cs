@@ -23,16 +23,28 @@ public class InputReader : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            anim.SetTrigger("Up");
-            Fever.instance.PlusFeverValue();
-            AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
-            HP.instance.RecoverHP();
+            var targetBranch = TreeManager.instance.treeGroup.ToArray()[1].branch;
+            if (targetBranch)
+            {
+                anim.SetTrigger("Up");
+                Fever.instance.PlusFeverValue();
+                AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
+                HP.instance.RecoverHP();
 
-            var sequence = DOTween.Sequence();
-            sequence.Append(Camera.main.DOOrthoSize(4.8f, 0.1f))
-                    .Append(Camera.main.DOOrthoSize(5f, 0.2f));
+                var sequence = DOTween.Sequence();
+                sequence.Append(Camera.main.DOOrthoSize(4.8f, 0.1f))
+                        .Append(Camera.main.DOOrthoSize(5f, 0.2f));
 
-            Destroy(TreeManager.instance.treeGroup.ToArray()[1].branch.gameObject);
+
+                TreeManager.instance.treeGroup.ToArray()[1].branch = null;
+                targetBranch.transform.SetParent(_treeSpawner.transform);
+                targetBranch.Shoot();
+                Destroy(targetBranch.gameObject, 5);
+            }
+            else
+            {
+
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
