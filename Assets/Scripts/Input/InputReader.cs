@@ -93,6 +93,14 @@ public class InputReader : MonoBehaviour
                 childLeft.transform.DORotate(new Vector3(0, 0, 20), 0.3f).SetEase(Ease.OutBounce);
                 childRight.transform.DORotate(new Vector3(0, 0, -20), 0.3f).SetEase(Ease.OutBounce);
 
+                var seq = DOTween.Sequence();
+
+                seq.Append(transform.DOScale(new Vector3(0.9f, 0.45f, 0.9f), 0.3f).SetEase(Ease.OutBack))
+                   .Append(transform.DOScale(new Vector3(0.9f, 0.9f, 0.9f), 0.2f).SetEase(Ease.OutBack));
+
+                onStun = true;
+                StartCoroutine(WaitStun(0.3f));
+
                 /*
                 childLeft.GetComponent<Rigidbody2D>().simulated = true;
                 childRight.GetComponent<Rigidbody2D>().simulated = true;
@@ -162,9 +170,16 @@ public class InputReader : MonoBehaviour
         }
     }
 
-    IEnumerator WaitStun()
+    IEnumerator WaitStun(float cooltime = 0)
     {
-        yield return new WaitForSeconds(stunCooltime);
+        if (cooltime == 0)
+        {
+            yield return new WaitForSeconds(stunCooltime);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
 
         onStun = false;
     }

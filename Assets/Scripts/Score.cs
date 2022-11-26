@@ -10,8 +10,13 @@ public class Score : MonoBehaviour
         UpdateScoreText();
     }
 
+    public void ResetScore()
+    {
+        TreeManager.instance.killCount = 0;
+    }
+
     public void UpdateScoreText()
     {
-        scoreText.text = "X " + TreeManager.instance.killCount;
+        scoreText.text = "x " + TreeManager.instance.killCount;
     }
 }
