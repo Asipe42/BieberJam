@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        onStart = false;
         HUDCanvas.gameObject.SetActive(false);
         GameOverCanvas.gameObject.SetActive(true);
 
