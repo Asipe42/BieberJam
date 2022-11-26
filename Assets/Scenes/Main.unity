@@ -4498,7 +4498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _treeSpawner: {fileID: 2127229441}
-  cooltime: 0.1
+  stunCooltime: 1
 --- !u!4 &1296619082
 Transform:
   m_ObjectHideFlags: 0

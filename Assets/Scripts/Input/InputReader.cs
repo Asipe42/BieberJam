@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
@@ -8,7 +9,9 @@ public class InputReader : MonoBehaviour
 
     Animator anim;
 
-    [SerializeField] float cooltime;
+    [SerializeField] float stunCooltime;
+
+    bool onStun;
 
     private void Awake()
     {
@@ -25,6 +28,9 @@ public class InputReader : MonoBehaviour
         if (!GameManager.onStart)
             return;
 
+        if (onStun)
+            return;
+
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             var targetBranch = TreeManager.instance.treeGroup.ToArray()[1].branch;
@@ -32,7 +38,7 @@ public class InputReader : MonoBehaviour
             {
                 anim.SetTrigger("Up");
                 Fever.instance.PlusFeverValue();
-                AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
+                AudioManager.instance.PlaySFX(SFXDefiniton.SFX_RIGHT);
                 HP.instance.RecoverHP();
 
                 var sequence = DOTween.Sequence();
@@ -47,7 +53,9 @@ public class InputReader : MonoBehaviour
             }
             else
             {
-
+                anim.SetTrigger("Stun");
+                onStun = true;
+                StartCoroutine(WaitStun());
             }
         }
 
@@ -79,5 +87,12 @@ public class InputReader : MonoBehaviour
                     .Append(Camera.main.DOOrthoSize(5f, 0.2f));
                     
         }
+    }
+
+    IEnumerator WaitStun()
+    {
+        yield return new WaitForSeconds(stunCooltime);
+
+        onStun = false;
     }
 }
