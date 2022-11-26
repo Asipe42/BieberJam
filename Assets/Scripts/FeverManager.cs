@@ -6,7 +6,9 @@ public class FeverManager : MonoBehaviour
     public static FeverManager instance;
 
     // Inspector
-    [SerializeField] int FeverMax;
+    [SerializeField] int _feverRequireMax = 50;
+    [SerializeField] int _feverRequireInit = 30;
+    [SerializeField] int _feverRequireIncrease = 2;
     [SerializeField] Animator _anim;
     [SerializeField] float _feverSpeed = 0.33f;
     [SerializeField] GameObject _firewoodPrefab;
@@ -23,6 +25,7 @@ public class FeverManager : MonoBehaviour
     }
 
     // Value
+    int _feverRequireCurrent;
     int _feverCount;
     bool _isFever;
     float _feverTime = 0;
@@ -55,6 +58,7 @@ public class FeverManager : MonoBehaviour
     public void OnStartGame()
     {
         _feverCount = 0;
+        _feverRequireCurrent = _feverRequireInit;
     }
 
     // Function - Public
@@ -65,7 +69,7 @@ public class FeverManager : MonoBehaviour
 
         _feverCount++;
 
-        if (_feverCount >= FeverMax)
+        if (_feverCount >= _feverRequireCurrent)
         {
             StartFever();
         }
@@ -83,7 +87,7 @@ public class FeverManager : MonoBehaviour
             _firewoodGOs[i].SetActive(false);
         }
 
-        if (_feverCount > 0 && _feverCount < FeverMax)
+        if (_feverCount > 0 && _feverCount < _feverRequireCurrent)
         {
             var newPos = _fireEffectTR.position;
             newPos.y = _firewoodGOs[_feverCount - 1].transform.position.y;
@@ -94,6 +98,7 @@ public class FeverManager : MonoBehaviour
     void StartFever()
     {
         _isFever = true;
+        _feverRequireCurrent += _feverRequireIncrease;
         _feverTime = 0;
         _anim.SetBool("Fever", true);
         HP.instance.RecoverAllHP();
@@ -109,11 +114,11 @@ public class FeverManager : MonoBehaviour
     [ContextMenu("CreateFirewood")]
     void CreateFirewood()
     {
-        _firewoodGOs = new GameObject[FeverMax];
+        _firewoodGOs = new GameObject[_feverRequireMax];
         Vector2 spawnOffset = new Vector2(0, 0);
         Vector2 firewoodSize = _firewoodSize;
 
-        for (var i = 0; i < FeverMax; i++)
+        for (var i = 0; i < _feverRequireMax; i++)
         {
             Vector3 spawnPos = _firewoodGroupTR.position + new Vector3((spawnOffset.x - (_firewoodStackCount - 1)/2) * _firewoodSize.x, spawnOffset.y * _firewoodSize.y, -(i + 1)/100f);
             var spawnedFirewoodGO = Instantiate(_firewoodPrefab, spawnPos, Quaternion.identity);
