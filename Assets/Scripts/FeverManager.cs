@@ -112,6 +112,7 @@ public class FeverManager : MonoBehaviour
     }
     void EndFever()
     {
+        _feverImage.SetActive(false);
         _isFever = false;
         _anim.SetBool("Fever", false);
         _fireEffectTR.gameObject.SetActive(false);

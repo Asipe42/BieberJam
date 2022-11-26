@@ -49,6 +49,7 @@ public class InputReader : MonoBehaviour
             var targetBranch = TreeManager.instance.treeGroup.ToArray()[1].branch;
             if (targetBranch)
             {
+                Combo.instance.SyncCombo();
                 anim.SetTrigger("Up");
                 FeverManager.instance.PlusFeverValue();
                 AudioManager.instance.PlaySFX(SFXDefiniton.SFX_UP);
@@ -66,6 +67,8 @@ public class InputReader : MonoBehaviour
             }
             else
             {
+                Combo.instance.SyncCombo(true);
+
                 anim.SetTrigger("Stun");
                 onStun = true;
                 StartCoroutine(WaitStun());
@@ -83,6 +86,8 @@ public class InputReader : MonoBehaviour
             var targetBranch = TreeManager.instance.treeGroup.ToArray()[1].branch;
             if (targetBranch)
             {
+                Combo.instance.SyncCombo(true);
+
                 var childLeft = targetBranch.transform.GetChild(0);
                 var childRight = targetBranch.transform.GetChild(1);
 
@@ -130,6 +135,7 @@ public class InputReader : MonoBehaviour
             }
             else
             {
+                Combo.instance.SyncCombo(false);
                 HP.instance.RecoverByTree();
             }
 
@@ -145,6 +151,8 @@ public class InputReader : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) ||
             Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
+            Combo.instance.SyncCombo(false);
+
             HP.instance.RecoverByTree();
 
             var targetBranch = TreeManager.instance.treeGroup.ToArray()[1].branch;
