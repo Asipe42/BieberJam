@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1743080636, guid: 1e8cf0d787339eb4e922f720f5785e65, type: 3}
+  m_Sprite: {fileID: -1294913580, guid: 7f2d5cf6d7846574ebc6a135e88e9d6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 3687325521497337203}
   - component: {fileID: -4320341596775230797}
   m_Layer: 0
-  m_Name: Branch01
+  m_Name: Branch03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,7 +316,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1743080636, guid: 1e8cf0d787339eb4e922f720f5785e65, type: 3}
+  m_Sprite: {fileID: -2013365459, guid: 7f2d5cf6d7846574ebc6a135e88e9d6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -344,7 +344,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2, y: 0.64}
+    oldSize: {x: 0.84, y: 0.64}
     newSize: {x: 0.96, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
