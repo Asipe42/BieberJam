@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         onStart = true;
+
+        FeverManager.instance.OnStartGame();
     }
 
     public void GameOver()
