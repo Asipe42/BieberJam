@@ -44,11 +44,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef68371cff5a3b469d766c798e1a657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FeverMax: 30
+  _feverRequireMax: 50
+  _feverRequireInit: 30
+  _feverRequireIncrease: 2
   _anim: {fileID: 0}
-  _feverSpeed: 0.33
+  _feverSpeed: 0.2
   _firewoodPrefab: {fileID: 6332709696555912868, guid: cc13f45021151de479fba9d02947ab09, type: 3}
-  _firewoodGOs: []
+  _firewoodGOs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _firewoodGroupTR: {fileID: 0}
-  _firewoodSize: {x: 0.2, y: 0.2}
-  _firewoodStackCount: 3
+  _firewoodSize: {x: 0.2, y: 0.1836}
+  _firewoodStackCount: 2
+  _fireEffectTR: {fileID: 0}

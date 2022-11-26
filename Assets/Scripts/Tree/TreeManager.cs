@@ -20,7 +20,9 @@ public class TreeManager : MonoBehaviour
         instance = this;
 
         treeGroup = new Queue<Tree>();
-
+    }
+    private void Start()
+    {
         for (var i = 0; i < initCount; i++)
             _treeSpawner.SpawnTree();
     }
