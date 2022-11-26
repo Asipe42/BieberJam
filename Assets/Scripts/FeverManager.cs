@@ -17,6 +17,7 @@ public class FeverManager : MonoBehaviour
     [SerializeField] Vector2 _firewoodSize;
     [SerializeField] int _firewoodStackCount;
     [SerializeField] Transform _fireEffectTR;
+    [SerializeField] GameObject _feverImage;
 
     // Property
     public bool isFever
@@ -97,6 +98,7 @@ public class FeverManager : MonoBehaviour
 
     void StartFever()
     {
+        _feverImage.SetActive(true);
         _isFever = true;
         _feverRequireCurrent += _feverRequireIncrease;
         _feverTime = 0;
