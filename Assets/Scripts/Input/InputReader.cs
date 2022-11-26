@@ -6,6 +6,7 @@ public class InputReader : MonoBehaviour
 {
     // Inspector
     [SerializeField] private TreeSpawner _treeSpawner;
+    [SerializeField] GameObject question;
 
     Animator anim;
 
@@ -38,7 +39,7 @@ public class InputReader : MonoBehaviour
             {
                 anim.SetTrigger("Up");
                 Fever.instance.PlusFeverValue();
-                AudioManager.instance.PlaySFX(SFXDefiniton.SFX_RIGHT);
+                AudioManager.instance.PlaySFX(SFXDefiniton.SFX_UP);
                 HP.instance.RecoverHP();
 
                 var sequence = DOTween.Sequence();
@@ -56,6 +57,11 @@ public class InputReader : MonoBehaviour
                 anim.SetTrigger("Stun");
                 onStun = true;
                 StartCoroutine(WaitStun());
+
+                var sequence = DOTween.Sequence();
+
+                sequence.Append(question.transform.DOScale(1f, 0.5f)).SetEase(Ease.OutBack)
+                        .Insert(1.5f, question.transform.DOScale(0f, 0.3f).SetEase(Ease.OutQuad));
             }
         }
 
@@ -65,12 +71,24 @@ public class InputReader : MonoBehaviour
             var targetBranch = TreeManager.instance.treeGroup.ToArray()[1].branch;
             if (targetBranch)
             {
-                var branchChild = targetBranch.transform.GetChild(0);
+                var childLeft = targetBranch.transform.GetChild(0);
+                var childRight = targetBranch.transform.GetChild(1);
 
                 targetBranch.GetComponent<Rigidbody2D>().simulated = true;
-                branchChild.GetComponent<BoxCollider2D>().enabled = true;
-                branchChild.GetComponent<Animator>().SetBool("Crack", true);
-                branchChild.GetComponent<SpriteRenderer>().DOFade(0, 1f).SetDelay(0.5f).OnComplete(() => Destroy(targetBranch.gameObject));
+                childLeft.GetComponent<PolygonCollider2D>().enabled = true;
+                childRight.GetComponent<PolygonCollider2D>().enabled = true;
+
+                childLeft.transform.DORotate(new Vector3(0, 0, 20), 0.3f).SetEase(Ease.OutBounce);
+                childRight.transform.DORotate(new Vector3(0, 0, -20), 0.3f).SetEase(Ease.OutBounce);
+
+                /*
+                childLeft.GetComponent<Rigidbody2D>().simulated = true;
+                childRight.GetComponent<Rigidbody2D>().simulated = true;
+                childLeft.GetComponent<Rigidbody2D>().AddTorque(5f, ForceMode2D.Impulse);
+                childRight.GetComponent<Rigidbody2D>().AddTorque(5f, ForceMode2D.Impulse);
+                */
+                childLeft.GetComponent<SpriteRenderer>().DOFade(0, 1f).SetDelay(0.5f);
+                childRight.GetComponent<SpriteRenderer>().DOFade(0, 1f).SetDelay(0.5f).OnComplete(() => Destroy(targetBranch.gameObject));
                 targetBranch.transform.SetParent(null);
             }
 
