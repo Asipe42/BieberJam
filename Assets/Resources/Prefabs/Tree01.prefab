@@ -150,4 +150,3 @@ MonoBehaviour:
   duration: 1
   waitDestroyTime: 3
   onBranch: 0
-  _healHP: 5

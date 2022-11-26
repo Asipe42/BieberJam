@@ -52,6 +52,10 @@ public class FeverManager : MonoBehaviour
         }
         SyncFever();
     }
+    public void OnStartGame()
+    {
+        _feverCount = 0;
+    }
 
     // Function - Public
     public void PlusFeverValue()
