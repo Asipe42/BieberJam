@@ -29,7 +29,7 @@ public class InputReader : MonoBehaviour
         {
             anim.SetTrigger("Up");
             Fever.instance.PlusFeverValue();
-            AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
+            AudioManager.instance.PlaySFX(SFXDefiniton.SFX_RIGHT);
             HP.instance.RecoverHP();
 
             var sequence = DOTween.Sequence();
@@ -44,7 +44,7 @@ public class InputReader : MonoBehaviour
             var shootTree = TreeManager.instance.treeGroup.Peek();
             shootTree.Shoot();
             _treeSpawner.SpawnTree();
-            AudioManager.instance.PlaySFX(SFXDefiniton.SFX_ATTACK);
+            AudioManager.instance.PlaySFX(SFXDefiniton.SFX_RIGHT);
             anim.SetTrigger("Right");
             Fever.instance.PlusFeverValue();
 
