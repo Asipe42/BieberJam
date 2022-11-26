@@ -18,6 +18,11 @@ public class HP : MonoBehaviour
         hp = hpMax;
     }
 
+    public void ResetHP()
+    {
+        hp = hpMax;
+    }
+
     public void RecoverHP()
     {
         hp = hpMax;
@@ -44,6 +49,7 @@ public class HP : MonoBehaviour
 
         DecreaseHP();
         SyncGauge();
+        CheckGameOver();
     }
 
     void SyncGauge()
@@ -54,5 +60,11 @@ public class HP : MonoBehaviour
     public void SpeedUp()
     {
         decreaseValue += 5;
+    }
+
+    void CheckGameOver()
+    {
+        if (hp <= 0)
+            GameManager.instance.GameOver();
     }
 }
