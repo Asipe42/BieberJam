@@ -4306,9 +4306,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d2c906f2375b7c343bda9180affa0c41, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 4bbc7741a033c9d409e166ad5c93d9d2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5539,7 +5539,7 @@ PrefabInstance:
     - target: {fileID: 4168723015785589634, guid: ab2b4421e5c0a2d4e8e540a87f016f57, type: 3}
       propertyPath: _fireEffectTR
       value: 
-      objectReference: {fileID: 1807180790}
+      objectReference: {fileID: 1862069771}
     - target: {fileID: 4168723015785589634, guid: ab2b4421e5c0a2d4e8e540a87f016f57, type: 3}
       propertyPath: _firewoodGroupTR
       value: 
@@ -7832,7 +7832,7 @@ GameObject:
   - component: {fileID: 1651413705}
   - component: {fileID: 1651413704}
   m_Layer: 0
-  m_Name: ChainSaw
+  m_Name: ChainSawLoop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7848,11 +7848,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ace8b571012c8984b84be18008fcd65f, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: d2fb3dd68e8966246b8b9bb24c673511, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -8258,11 +8258,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4256550237153637399, guid: ab74f514cbf588e41890a405f6137a67, type: 3}
   m_PrefabInstance: {fileID: 1807180788}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1807180790 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6674897815387911055, guid: ab74f514cbf588e41890a405f6137a67, type: 3}
-  m_PrefabInstance: {fileID: 1807180788}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1811233757
 GameObject:
   m_ObjectHideFlags: 0
@@ -8517,6 +8512,11 @@ MonoBehaviour:
   light: {fileID: 1861131143}
   minIntensity: 0.05
   maxIntensity: 0.12
+--- !u!4 &1862069771 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3246841526271515323, guid: ab74f514cbf588e41890a405f6137a67, type: 3}
+  m_PrefabInstance: {fileID: 1807180788}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1878201339
 GameObject:
   m_ObjectHideFlags: 0

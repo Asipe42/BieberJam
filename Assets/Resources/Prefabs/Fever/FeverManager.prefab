@@ -50,37 +50,7 @@ MonoBehaviour:
   _anim: {fileID: 0}
   _feverSpeed: 0.2
   _firewoodPrefab: {fileID: 6332709696555912868, guid: cc13f45021151de479fba9d02947ab09, type: 3}
-  _firewoodGOs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _firewoodGOs: []
   _firewoodGroupTR: {fileID: 0}
   _firewoodSize: {x: 0.2, y: 0.1836}
   _firewoodStackCount: 2

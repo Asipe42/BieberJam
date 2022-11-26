@@ -103,12 +103,19 @@ public class FeverManager : MonoBehaviour
         _anim.SetBool("Fever", true);
         HP.instance.RecoverAllHP();
         _fireEffectTR.gameObject.SetActive(true);
+
+        AudioManager.instance.PlaySFX(SFXDefiniton.SFX_CHAINSAWSTART);
+        BGMManager.instance.DefaultToFever();
+        BGMManager.instance.StartChainsaw();
     }
     void EndFever()
     {
         _isFever = false;
         _anim.SetBool("Fever", false);
         _fireEffectTR.gameObject.SetActive(false);
+
+        BGMManager.instance.FeverToDefault();
+        BGMManager.instance.StopChainsaw();
     }
 
     [ContextMenu("CreateFirewood")]

@@ -24,17 +24,24 @@ public class BGMManager : MonoBehaviour
         currentBGMType = EBGMType.Default;
     }
 
-    // TEST CODE
-    [ContextMenu("Default To Fever")]
-    void DefaultToFever()
+    public void DefaultToFever()
     {
         ChangeBGM(EBGMType.Fever);
     }
 
     [ContextMenu("Fever To Default")]
-    void FeverToDefault()
+    public void FeverToDefault()
     {
         ChangeBGM(EBGMType.Default);
+    }
+    public void StartChainsaw()
+    {
+        chainSawChannel.Play();
+        chainSawChannel.DOFade(1, 1f);
+    }
+    public void StopChainsaw()
+    {
+        chainSawChannel.DOFade(1, 1f).OnComplete(()=> chainSawChannel.Stop());
     }
 
     public void ChangeBGM(EBGMType type)
@@ -51,13 +58,14 @@ public class BGMManager : MonoBehaviour
         switch (currentBGMType)
         {
             case EBGMType.Default:
-                sequence.Append(feverBGMChannel.DOFade(0, 0.5f).OnComplete(() => feverBGMChannel.Stop()))
-                        .Append(defaultBGMChannel.DOFade(1, 0.5f).OnStart(() => defaultBGMChannel.Play()));
+                defaultBGMChannel.DOFade(1, 0.5f);
+                feverBGMChannel.DOFade(0, 0.5f);
+                chainSawChannel.Stop();
                 break;
             case EBGMType.Fever:
-                sequence.Append(defaultBGMChannel.DOFade(0, 0.5f).OnComplete(() => defaultBGMChannel.Stop()))
-                        .InsertCallback(0.2f, () => chainSawChannel.Play())
-                        .Append(feverBGMChannel.DOFade(1, 0.5f).OnStart(() => feverBGMChannel.Play()));
+                defaultBGMChannel.DOFade(0, 0.5f);
+                feverBGMChannel.DOFade(1, 0.5f);
+                chainSawChannel.Play();
                 break;
         }
     }

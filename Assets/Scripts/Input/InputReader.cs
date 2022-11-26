@@ -160,7 +160,6 @@ public class InputReader : MonoBehaviour
             var shootTree = TreeManager.instance.treeGroup.Peek();
             shootTree.Shoot();
             _treeSpawner.SpawnTree();
-            AudioManager.instance.PlaySFX(SFXDefiniton.SFX_RIGHT);
             anim.SetTrigger("Right");
 
 
