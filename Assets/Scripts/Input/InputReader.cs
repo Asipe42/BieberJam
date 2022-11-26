@@ -41,6 +41,7 @@ public class InputReader : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
+            TreeManager.instance.killCount++;
             var shootTree = TreeManager.instance.treeGroup.Peek();
             shootTree.Shoot();
             _treeSpawner.SpawnTree();
