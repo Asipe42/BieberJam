@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Canvas TitleCanvas;
     [SerializeField] Canvas GameOverCanvas;
     [SerializeField] Image gameOverPanel;
+    [SerializeField] ScoreManager scoreManager;
 
     private void Awake()
     {
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        scoreManager.ChangeHighScore(TreeManager.instance.killCount);
+
         onStart = false;
         HUDCanvas.gameObject.SetActive(false);
         GameOverCanvas.gameObject.SetActive(true);

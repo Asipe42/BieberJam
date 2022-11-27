@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TreeManager : MonoBehaviour
 {
@@ -11,9 +12,17 @@ public class TreeManager : MonoBehaviour
     [SerializeField] int[] speedUpIndex;
     [SerializeField] bool[] onSpeedUp;
     
-    public int killCount;
+    // Property
+    public int killCount
+    {
+        get { return _killCount; }
+        set { _killCount = value; }
+    }
 
     public Queue<Tree> treeGroup;
+
+    // Value
+    private int _killCount;
 
     public void ResetSppedUP()
     {
